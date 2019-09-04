@@ -9,7 +9,7 @@ using namespace std;
 
 void gamma(){
 
-	TFile *file = new TFile("data.root","read");
+	TFile *file = new TFile("data_La_double.root","read");
 	TTree *data = (TTree *)file -> Get("data");
 	//TFile *file1 = new TFile("hist_g4.root","recreate");
         //TTree *tree1 = new TTree("tree1","tree1");	
@@ -70,7 +70,7 @@ void gamma(){
 				}
 			}
 		}
-		/*else if (volumeID==200)
+		else if (volumeID==200)
 		{
 			if(eventID==a)
 			{
@@ -95,7 +95,7 @@ void gamma(){
 						b1=edep;
 				}
 			}
-		}*/
+		}
 		else continue;
 		a=eventID;
 	}

@@ -399,6 +399,10 @@ CMakeFiles/miniball.dir/src/DetectorConstruction.cc.o: /data/GEANT4.10.05/includ
 CMakeFiles/miniball.dir/src/DetectorConstruction.cc.o: /data/GEANT4.10.05/include/Geant4/G4Allocator.hh
 CMakeFiles/miniball.dir/src/DetectorConstruction.cc.o: /data/GEANT4.10.05/include/Geant4/G4AllocatorPool.hh
 CMakeFiles/miniball.dir/src/DetectorConstruction.cc.o: /data/GEANT4.10.05/include/Geant4/G4ApplicationState.hh
+CMakeFiles/miniball.dir/src/DetectorConstruction.cc.o: /data/GEANT4.10.05/include/Geant4/G4AssemblyTriplet.hh
+CMakeFiles/miniball.dir/src/DetectorConstruction.cc.o: /data/GEANT4.10.05/include/Geant4/G4AssemblyTriplet.icc
+CMakeFiles/miniball.dir/src/DetectorConstruction.cc.o: /data/GEANT4.10.05/include/Geant4/G4AssemblyVolume.hh
+CMakeFiles/miniball.dir/src/DetectorConstruction.cc.o: /data/GEANT4.10.05/include/Geant4/G4AssemblyVolume.icc
 CMakeFiles/miniball.dir/src/DetectorConstruction.cc.o: /data/GEANT4.10.05/include/Geant4/G4AutoLock.hh
 CMakeFiles/miniball.dir/src/DetectorConstruction.cc.o: /data/GEANT4.10.05/include/Geant4/G4AuxiliaryNavServices.hh
 CMakeFiles/miniball.dir/src/DetectorConstruction.cc.o: /data/GEANT4.10.05/include/Geant4/G4AuxiliaryNavServices.icc

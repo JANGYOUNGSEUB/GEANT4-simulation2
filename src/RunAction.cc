@@ -1,5 +1,6 @@
 #include "RunAction.hh"
 
+
 RunAction::RunAction()
 : G4UserRunAction()
 {
@@ -13,7 +14,7 @@ RunAction::~RunAction()
 void RunAction::BeginOfRunAction(const G4Run*)
 {
   G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-  analysisManager -> OpenFile("data");
+  analysisManager -> OpenFile("data_La_double");
 
   analysisManager -> CreateNtuple("data", "data");
   analysisManager -> SetFirstNtupleId(0);
@@ -21,6 +22,7 @@ void RunAction::BeginOfRunAction(const G4Run*)
   analysisManager -> CreateNtupleIColumn("volumeID");
   analysisManager -> CreateNtupleIColumn("particleID");
   analysisManager -> CreateNtupleDColumn("edep");
+  analysisManager -> CreateNtupleDColumn("KineticEnergy");
   analysisManager -> FinishNtuple();
 
 

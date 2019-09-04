@@ -12,7 +12,7 @@
 #include "G4VSolid.hh"
 #include "G4RotationMatrix.hh"
 #include "G4SubtractionSolid.hh"
-
+#include "G4AssemblyVolume.hh"
 #include "stdio.h"
 #include <iostream>
 
@@ -281,12 +281,9 @@ a=-(((-0.45-(113.6+70))));
 }
 }
 
-
 */
 
-
-//  -----------subtraction part-------------
-
+//-----------------------------double ------------------------------
 G4Tubs* Detector1 =
     new G4Tubs("Detector1",0*mm,43.1/2*mm,38.7/2*mm,0.*deg,360.*deg);
 G4Tubs* Detector2 =
@@ -300,7 +297,55 @@ G4Tubs* Detector_pmt =
     new G4Tubs("Detectr_pmt",0*mm,44.5/2*mm,(148.5-38.7)/2*mm,0.*deg,360.*deg);
 
 double a;
+double distance=25;
 
+		a=(distance+38.7/2+0.2);
+		G4LogicalVolume* logic_scin =
+			new G4LogicalVolume(scin,scin_mat,"scin");
+			new G4PVPlacement(0,G4ThreeVector(0,0,a),logic_scin,"scin",logicWorld,false,200,true);
+		a=(distance+38.7/2);
+		G4LogicalVolume* logicDetector_scin =
+			new G4LogicalVolume(Detector_scin,detector_mat,"Detector_scin");
+			new G4PVPlacement(0,G4ThreeVector(0,0,a),logicDetector_scin,"Detector_scin",logicWorld,false,1,true);
+		a=(distance+(148.5-38.7)/2+38.7);
+		G4LogicalVolume* logicDetector_pmt =
+			new G4LogicalVolume(Detector_pmt,detector_mat,"Detector_pmt");
+			new G4PVPlacement(0,G4ThreeVector(0,0,a),logicDetector_pmt,"Detector_pmt",logicWorld,false,1,true);
+
+		a=-(distance+38.7/2+0.2);
+		G4LogicalVolume* logic_scin1 =
+			new G4LogicalVolume(scin,scin_mat,"scin");
+			new G4PVPlacement(0,G4ThreeVector(0,0,a),logic_scin,"scin",logicWorld,false,400,true);
+		a=-(distance+38.7/2);
+		G4LogicalVolume* logicDetector_scin1 =
+			new G4LogicalVolume(Detector_scin,detector_mat,"Detector_scin");
+			new G4PVPlacement(0,G4ThreeVector(0,0,a),logicDetector_scin,"Detector_scin",logicWorld,false,1,true);
+		a=-(distance+(148.5-38.7)/2+38.7);
+		G4LogicalVolume* logicDetector_pmt1 =
+			new G4LogicalVolume(Detector_pmt,detector_mat,"Detector_pmt");
+			new G4PVPlacement(0,G4ThreeVector(0,0,a),logicDetector_pmt,"Detector_pmt",logicWorld,false,1,true);
+//-----------------------double ----
+
+
+
+
+//  -----------ring type-------------
+
+/*
+G4Tubs* Detector1 =
+    new G4Tubs("Detector1",0*mm,43.1/2*mm,38.7/2*mm,0.*deg,360.*deg);
+G4Tubs* Detector2 =
+  new G4Tubs("Detector2",0*mm,38.1/2*mm,(38.7-1)/2*mm,0.*deg,360.*deg);
+
+G4Tubs* scin =
+    new G4Tubs("scin",0*mm,38.1/2*mm,38.1/2*mm,0.*deg,360.*deg);
+G4SubtractionSolid* Detector_scin = 
+    new G4SubtractionSolid("Detector_scin",Detector1,Detector2);
+G4Tubs* Detector_pmt =
+    new G4Tubs("Detectr_pmt",0*mm,44.5/2*mm,(148.5-38.7)/2*mm,0.*deg,360.*deg);
+
+double a;
+double distance=110;
 for(int i=0;i<8;i++)
 {
 	for(int j=-1;j<2;j++)
@@ -310,27 +355,214 @@ for(int i=0;i<8;i++)
 		boxRotation->rotateX(45*deg*i);
 		boxRotation->rotateY(25*deg*j);
 
-		a=(70+38.7/2+0.2);
+		a=(distance+38.7/2+0.2);
 		G4LogicalVolume* logic_scin =
 			new G4LogicalVolume(scin,scin_mat,"scin");
-			new G4PVPlacement(boxRotation,G4ThreeVector(-sin(25*j*deg)*a,a*sin(45*i*deg)*cos(24*j*deg),a*cos(45*i*deg)*cos(25*deg*j)),logic_scin,"scin",logicWorld,false,200,true);
-		a=(70+38.7/2);
+			new G4PVPlacement(boxRotation,G4ThreeVector(-sin(25*j*deg)*a,a*sin(45*i*deg)*cos(24*j*deg),a*cos(45*i*deg)*cos(25*deg*j)),logic_scin,"scin",logicWorld,false,(200+(j+2)*10+(i+1)),true);
+		a=(distance+38.7/2);
 		G4LogicalVolume* logicDetector_scin =
 			new G4LogicalVolume(Detector_scin,detector_mat,"Detector_scin");
 			new G4PVPlacement(boxRotation,G4ThreeVector(-sin(25*j*deg)*a,a*sin(45*i*deg)*cos(24*j*deg),a*cos(45*i*deg)*cos(25*deg*j)),logicDetector_scin,"Detector_scin",logicWorld,false,1,true);
-		a=(70+(148.5-38.7)/2+38.7);
+		a=(distance+(148.5-38.7)/2+38.7);
 		G4LogicalVolume* logicDetector_pmt =
 			new G4LogicalVolume(Detector_pmt,detector_mat,"Detector_pmt");
 			new G4PVPlacement(boxRotation,G4ThreeVector(-sin(25*j*deg)*a,a*sin(45*i*deg)*cos(24*j*deg),a*cos(45*i*deg)*cos(25*deg*j)),logicDetector_pmt,"Detector_pmt",logicWorld,false,1,true);
-
-
-
-
 	}
 }
+*/
 
 //---------------------------------------//
 
+
+
+
+
+
+/*
+//---------------------4cluster------------------------
+
+G4Tubs* Detector1 =
+new G4Tubs("Detector1",0*mm,43.1/2*mm,38.7/2*mm,0.*deg,360.*deg);
+G4Tubs* Detector2 =
+new G4Tubs("Detector2",0*mm,38.1/2*mm,(38.7-1)/2*mm,0.*deg,360.*deg);
+
+G4Tubs* scin =
+new G4Tubs("scin",0*mm,38.1/2*mm,38.1/2*mm,0.*deg,360.*deg);
+G4SubtractionSolid* Detector_scin =
+new G4SubtractionSolid("Detector_scin",Detector1,Detector2);
+G4Tubs* Detector_pmt =
+new G4Tubs("Detectr_pmt",0*mm,44.5/2*mm,(148.5-38.7)/2*mm,0.*deg,360.*deg);
+
+double a;
+int j=0;
+int i=0;
+G4RotationMatrix* boxRotation = new G4RotationMatrix;
+boxRotation->rotateX(45*deg*i);
+boxRotation->rotateY(25*deg*j);
+
+for(i=0;i<4;i++){
+
+
+double num;
+if(i%2==0)
+{
+	num=i-1;
+}
+else
+{
+	num=i-2;
+}
+
+a=(50+38.7/2+0.2);
+G4LogicalVolume* logic_scin =
+new G4LogicalVolume(scin,scin_mat,"scin");
+new G4PVPlacement(0,G4ThreeVector((-44.5/2*(i-num-2)*num),44.5*sqrt(3)*(i-num-1)/2*(-num),a),logic_scin,"scin",logicWorld,false,200*(i+1),true);
+
+a=(50+38.7/2);
+G4LogicalVolume* logicDetector_scin =
+new G4LogicalVolume(Detector_scin,detector_mat,"Detector_scin");
+new G4PVPlacement(0,G4ThreeVector((-44.5/2*(i-num-2)*num),44.5*sqrt(3)*(i-num-1)/2*(-num),a),logicDetector_scin,"Detector_scin",logicWorld,false,1,true);
+
+a=(50+(148.5-38.7)/2+38.7);
+
+G4LogicalVolume* logicDetector_pmt =
+new G4LogicalVolume(Detector_pmt,detector_mat,"Detector_pmt");
+new G4PVPlacement(0,G4ThreeVector((-44.5/2*(i-num-2)*num),44.5*sqrt(3)*(i-num-1)/2*(-num),a),logicDetector_pmt,"Detector_pmt",logicWorld,false,1,true);
+
+
+}
+//------------------------------------------
+*/
+
+
+//----------6 detector---------------
+/*
+ 
+G4Tubs* Detector1 =
+new G4Tubs("Detector1",0*mm,43.1/2*mm,38.7/2*mm,0.*deg,360.*deg);
+G4Tubs* Detector2 =
+new G4Tubs("Detector2",0*mm,38.1/2*mm,(38.7-1)/2*mm,0.*deg,360.*deg);
+
+G4Tubs* scin =
+new G4Tubs("scin",0*mm,38.1/2*mm,38.1/2*mm,0.*deg,360.*deg);
+G4SubtractionSolid* Detector_scin = 
+new G4SubtractionSolid("Detector_scin",Detector1,Detector2);
+G4Tubs* Detector_pmt =
+new G4Tubs("Detectr_pmt",0*mm,44.5/2*mm,(148.5-38.7)/2*mm,0.*deg,360.*deg);
+
+double a;
+
+for(int k=0;k<2;k++)
+{
+//for(int i=0;i<3;i++)
+int i=0;
+{
+	for(int j=-1;j<2;j++)
+	{
+		G4RotationMatrix* boxRotation = new G4RotationMatrix;
+		boxRotation->rotateZ(120*deg*i*(1-2*k));
+		boxRotation->rotateY(-25*deg*j*(1-2*k));
+		boxRotation->rotateX(-25*deg*(abs(j)*2-1));
+
+		a=(70+38.7/2+0.2);
+		G4LogicalVolume* logic_scin =
+		new G4LogicalVolume(scin,scin_mat,"scin");
+		new G4PVPlacement(boxRotation,G4ThreeVector(sin(25*deg*j)*cos(25*deg)*a,sin(-25*deg*(abs(j)*2-1))*a*(1-2*k),a*(cos(-25*deg*(abs(j)*2-1)))*cos(25*deg*j)*(1-2*k)),logic_scin,"scin",logicWorld,false,200,true);
+		
+		a=(70+38.7/2);
+		G4LogicalVolume* logicDetector_scin =
+		new G4LogicalVolume(Detector_scin,detector_mat,"Detector_scin");
+		new G4PVPlacement(boxRotation,G4ThreeVector(sin(25*j*deg)*cos(25*deg)*a,sin(-25*deg*(abs(j)*2-1))*a*(1-2*k),a*cos(-25*deg*(abs(j)*2-1))*cos(25*deg*j)*(1-2*k)),logicDetector_scin,"Detector_scin",logicWorld,false,1,true);
+		
+		a=(70+(148.5-38.7)/2+38.7);
+		G4LogicalVolume* logicDetector_pmt =
+		new G4LogicalVolume(Detector_pmt,detector_mat,"Detector_pmt");
+		new G4PVPlacement(boxRotation,G4ThreeVector(sin(25*deg*j)*cos(25*deg)*a,sin(-25*deg*(abs(j)*2-1))*a*(1-2*k),a*cos(-25*deg*(abs(j)*2-1))*cos(25*deg*j)*(1-2*k)),logicDetector_pmt,"Detector_pmt",logicWorld,false,1,true);
+	}
+}
+
+}
+*/
+//---------------------------------
+
+
+
+ //-------------------------6 x cluster -----------------------------------------------------
+ /*
+G4Tubs* Detector1 =
+new G4Tubs("Detector1",0*mm,43.1/2*mm,38.7/2*mm,0.*deg,360.*deg);
+G4Tubs* Detector2 =
+new G4Tubs("Detector2",0*mm,38.1/2*mm,(38.7-1)/2*mm,0.*deg,360.*deg);
+
+G4Tubs* scin =
+new G4Tubs("scin",0*mm,38.1/2*mm,38.1/2*mm,0.*deg,360.*deg);
+G4SubtractionSolid* Detector_scin =
+new G4SubtractionSolid("Detector_scin",Detector1,Detector2);
+G4Tubs* Detector_pmt =
+new G4Tubs("Detectr_pmt",0*mm,44.5/2*mm,(148.5-38.7)/2*mm,0.*deg,360.*deg);
+
+double a;
+int k=0;
+int j;
+double angle=55;
+double distance=110;
+
+for(k=0;k<2;k++)
+{
+
+for(j=-1;j<2;j++)
+{
+ 
+G4ThreeVector *Rotaxis=new G4ThreeVector(-sin(30*deg)*(abs(j)*2-1),cos(30*deg)*j,0);
+  G4RotationMatrix* boxRotation = new G4RotationMatrix;
+  boxRotation->rotate(-angle*deg,Rotaxis);
+  //G4RotationMatrix* boxRotation2 = new G4RotationMatrix;
+  //boxRotation2->rotate(-30*deg,Rotaxis);
+  //boxRotation2->rotateZ(-60*deg);
+  //G4RotationMatrix* boxRotation3 = new G4RotationMatrix;
+  //boxRotation3->rotate(-30*deg,Rotaxis);
+  //boxRotation3->rotateZ(60*deg);
+
+
+
+for(int i=0;i<4;i++){
+
+
+double num;
+if(i%2==0)
+{
+        num=i-1;
+}
+else
+{
+        num=i-2;
+}
+
+a=(distance+38.7/2+0.2);
+G4LogicalVolume* logic_scin =
+new G4LogicalVolume(scin,scin_mat,"scin");
+new G4PVPlacement(boxRotation,G4ThreeVector((-44.5/2*(i-num-2)*num)*(1-2*k),44.5*sqrt(3)*(i-num-1)/2*(-num)*(1-2*k),a*(1-2*k)).rotate(angle*deg,G4ThreeVector(-sin(30*deg)*(abs(j)*2-1),cos(30*deg)*j,0)),logic_scin,"scin",logicWorld,false,10*(i+1)*(j+6)*(2*k-1),true);
+
+a=(distance+38.7/2);
+G4LogicalVolume* logicDetector_scin =
+new G4LogicalVolume(Detector_scin,detector_mat,"Detector_scin");
+new G4PVPlacement(boxRotation,G4ThreeVector((-44.5/2*(i-num-2)*num)*(1-2*k),44.5*sqrt(3)*(i-num-1)/2*(-num)*(1-2*k),a*(1-2*k)).rotate(angle*deg,G4ThreeVector(-sin(30*deg)*(abs(j)*2-1),cos(30*deg)*j,0)),logicDetector_scin,"Detector_scin",logicWorld,false,1,true);
+
+a=(distance+(148.5-38.7)/2+38.7);
+
+G4LogicalVolume* logicDetector_pmt =
+new G4LogicalVolume(Detector_pmt,detector_mat,"Detector_pmt");
+new G4PVPlacement(boxRotation,G4ThreeVector((-44.5/2*(i-num-2)*num)*(1-2*k),44.5*sqrt(3)*(i-num-1)/2*(-num)*(1-2*k),a*(1-2*k)).rotate(angle*deg,G4ThreeVector(-sin(30*deg)*(abs(j)*2-1),cos(30*deg)*j,0)),logicDetector_pmt,"Detector_pmt",logicWorld,false,1,true);
+
+
+
+}
+
+
+}
+}
+*/
+//-------------------------------------------------------------------
 
 
 
@@ -343,15 +575,37 @@ G4Material* plastic_mat = new G4Material("Plastic",  1.032*g/cm3, 2);
         plastic_mat->AddElement(C, 9);
         plastic_mat->AddElement(H, 10);
 
+//-----------------source capsule----
 G4VSolid* source_encap = new G4Tubs("source_encap", 0.*mm, 0.5*25.5*mm, 0.5*6.3*mm, 0., 2*M_PI*rad);
         G4LogicalVolume* log_source_encap = new G4LogicalVolume(source_encap, plastic_mat, "SourceCase");
 
 
 
 
-new G4PVPlacement(0, G4ThreeVector(0*mm, 0.*mm, 0.*mm),log_source_encap, "SourceCase", logicWorld, false, 400);
+new G4PVPlacement(0, G4ThreeVector(0.*mm,0.*mm, 0.*mm),log_source_encap, "SourceCase", logicWorld, false, 1);
 
+//----------------source capsule-----*/
 
+//----------beam line
+/*
+ G4Box* chamber =
+   new G4Box("chamber",                       // its name
+             50,                // half x
+             35,                // half y
+             800);               // half z
+ G4LogicalVolume* log_cham =
+   new G4LogicalVolume(chamber,          //its solid
+                       plastic_mat,           //its material
+                       "chamber");            //its name
+   new G4PVPlacement(0,                     //no rotation
+                     G4ThreeVector(),       //at (0,0,0)
+                     log_cham,            //its logical volume
+                     "chamber",               //its name
+                     logicWorld,                     //its mother  volume
+                     false,                 //no boolean operation
+                     0,                     //copy number
+                     true);                 //overlaps checking
+*/
 
 
 

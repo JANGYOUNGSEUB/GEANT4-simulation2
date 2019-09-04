@@ -400,6 +400,10 @@ CMakeFiles/miniball.dir/src/DetectorConstruction.cc.o
  /data/GEANT4.10.05/include/Geant4/G4Allocator.hh
  /data/GEANT4.10.05/include/Geant4/G4AllocatorPool.hh
  /data/GEANT4.10.05/include/Geant4/G4ApplicationState.hh
+ /data/GEANT4.10.05/include/Geant4/G4AssemblyTriplet.hh
+ /data/GEANT4.10.05/include/Geant4/G4AssemblyTriplet.icc
+ /data/GEANT4.10.05/include/Geant4/G4AssemblyVolume.hh
+ /data/GEANT4.10.05/include/Geant4/G4AssemblyVolume.icc
  /data/GEANT4.10.05/include/Geant4/G4AutoLock.hh
  /data/GEANT4.10.05/include/Geant4/G4AuxiliaryNavServices.hh
  /data/GEANT4.10.05/include/Geant4/G4AuxiliaryNavServices.icc

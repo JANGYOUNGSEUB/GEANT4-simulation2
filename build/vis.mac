@@ -24,7 +24,7 @@
 /vis/set/lineWidth
 
 /vis/geometry/set/visibility World 0 false
-/vis/viewer/set/background black
+/vis/viewer/set/background  0.88 0.83 0.745 
 #/vis/geometry/set/colour LaBr 1 0.8 0.8 1 0.3
 #/vis/geometry/set/colour DSSD 1 0.8 0.8 1 0.3
 #/vis/geometry/set/colour N2 1 0.8 0.8 1 0.3
@@ -36,8 +36,8 @@
 #/vis/geometry/set/colour AlCap 0 0.7 0.7 0.7 1
 #/vis/geometry/set/colour PMT 1 0.2 0.2 0.2 1
 /vis/geometry/set/colour scin  1 0.287 1 1 1
-/vis/geometry/set/colour Detector_scin  1 1 0 0 1
-/vis/geometry/set/colour Detector_pmt  1 0 0 1 1
+/vis/geometry/set/colour Detector_scin  1 0.486 0.486 0.486 1
+/vis/geometry/set/colour Detector_pmt  1 0.239 0.239 0.239 1
 
 /vis/viewer/set/style surface
 /vis/viewer/set/hiddenMarker true
